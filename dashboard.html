@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TEACHER'S DASHBOARD</title>
+    <style>
+        @font-face {
+            font-family: 'Eras Bold ITC';
+            src: url('path-to-your-font/ErasBoldITC.ttf') format('truetype');
+            /* Make sure to update the path-to-your-font with the actual path to your font file */
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            overflow: hidden; /* Ensure no scrollbars */
+            /* background-image: url('https://img.freepik.com/free-vector/abstract-technological-background_23-2148897676.jpg?t=st=1715709477~exp=1715713077~hmac=a9527670e27cc0eb98f51390be516882151e15b4b3a8ec6298e249bc0e1fa305&w=996'); */
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        #topbar {
+            background-color: darkcyan;
+            color: white;
+            padding: 25px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            position: relative; /* Set position to relative for containing the absolute positioned button */
+            flex-shrink: 0; /* Prevent shrinking */
+            margin-bottom: 0px; /* Add margin bottom for better spacing */
+        }
+
+        #topbar h1 {
+            margin: 0;
+            font-family: "Berlin Sans FB", sans-serif; /* Apply the custom font */
+            color: white;
+            font-size: 24px; /* Increase font size for better readability */
+        }
+
+        #logout {
+            background-color: grey; /* Attractive background color */
+            border: none;
+            color: white;
+            cursor: pointer;
+            position: absolute; /* Position the button absolutely */
+            right: 50px; /* Slightly to the right */
+            font-size: 20px;
+            padding: 10px 20px; /* Add padding */
+            border-radius: 5px; /* Rounded corners */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle box shadow */
+            transition: background-color 0.3s, transform 0.3s; /* Smooth transitions */
+            font-family: "Berlin Sans FB", sans-serif;
+        }
+
+        #logout:hover {
+            background-color: white; /* Slightly darker on hover */
+            transform: translateY(-2px); /* Lift effect on hover */
+            color: black;
+        }
+
+        #content {
+            display: flex;
+            flex: 1;
+            overflow: hidden; /* Ensure no scrollbars */
+        }
+
+        #sidebar {
+            width: 200px; /* Increased width for better readability */
+            height: auto;
+            background-color: #f0f0f0;
+            padding: 30px 20px;
+            font-family: "Rockwell", sans-serif;
+            font-size: 25px;
+        }
+
+        #sidebar select {
+            width: 100%;
+            margin-bottom: 20px;
+            padding: 12px;
+            border:none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+            font-family: "Rockwell", sans-serif;
+            font-size: 18px;
+        }
+
+        #sidebar select:hover {
+            background-color: #e0e0e0;
+            transform: translateY(-2px); /* Lift effect on hover */
+        }
+
+        #timetable {
+            display: none;
+            padding: 20px;
+            flex: 1;
+            overflow: hidden; /* Ensure no scrollbars */
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            font-family: "Segoe UI Black";
+            border: 2px solid darkcyan;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            table-layout: fixed; /* Fixed table layout */
+            margin: 0; /* Ensure table is within viewport */
+        }
+
+        th, td{
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+            word-wrap: break-word;
+            font-size: 0.9rem; /* Slightly smaller font size */
+            background-color: white;
+        }
+
+        th {
+            background-color: darkcyan;
+            color: white;
+        }
+
+        td.lunch {
+            border-left: 1px solid #ddd;
+            border-right: 1px solid #ddd;
+            border-top: none;
+            border-bottom: none;
+        }
+
+        tr:last-child td.lunch {
+            border-bottom: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+    <div id="topbar">
+        <h1> WELCOME TEACHER!! </h1>
+        <button id="logout">Logout</button>
+    </div>
+    <div id="content">
+        <div id="sidebar">
+            <select id="class-select">
+                <option value="">Select Class</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+            </select>
+            <select id="section-select">
+                <option value="">Select Section</option>
+                <option value="A">A</option>
+                <option value="B">B</option>
+            </select>
+            <select id="subject-select">
+                <option value="">Select Subject</option>
+                <option value="telugu">Telugu</option>
+                <option value="english">English</option>
+                <option value="hindi">Hindi</option>
+                <option value="science">Science</option>
+                <option value="maths">Maths</option>
+                <option value="social">Social</option>
+            </select>
+        </div>
+        <div id="timetable">
+            <table>
+                <tr>
+                    <th>Weeks</th>
+                    <th>1st Period</th>
+                    <th>2nd Period</th>
+                    <th>3rd Period</th>
+                    <th>Lunch</th>
+                    <th>4th Period</th>
+                    <th>5th Period</th>
+                    <th>6th Period</th>
+                </tr>
+                <tr>
+                    <td>Monday</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td class="lunch"></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Tuesday</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td class="lunch"></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Wednesday</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td class="lunch"></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Thursday</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td class="lunch"></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Friday</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td class="lunch"></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Saturday</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td class="lunch"></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('class-select').addEventListener('change', function() {
+            if (this.value !== "") {
+                document.getElementById('section-select').disabled = false;
+            } else {
+                document.getElementById('section-select').disabled = true;
+            }
+        });
+
+        document.getElementById('section-select').addEventListener('change', function() {
+            if (this.value !== "") {
+                document.getElementById('subject-select').disabled = false;
+            } else {
+                document.getElementById('subject-select').disabled = true;
+            }
+        });
+
+        document.getElementById('subject-select').addEventListener('change', function() {
+            var timetable = document.getElementById('timetable');
+            if (this.value !== "") {
+                timetable.style.display = 'block';
+            } else {
+                timetable.style.display = 'none';
+            }
+        });
+
+        document.getElementById('logout').addEventListener('click', function() {
+            window.location.href = 'login.html';
+        });
+    </script>
+</body>
+</html>
